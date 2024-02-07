@@ -1,0 +1,5 @@
+# Ignore JSON files
+*.json
+*.pyproject
+*.pyproject.user
+*.py.autosave
