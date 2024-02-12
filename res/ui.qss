@@ -1,0 +1,56 @@
+QLineEdit {
+        font-size: 13pt;
+}
+
+QComboBox {
+        font-size: 10pt;
+}
+
+QLabel {
+        font-size: 13pt;
+}
+
+QCheckBox {
+        font-size: 11pt;
+}
+
+QGroupBox {
+        border: 5px solid rgba(254,254,254,254);
+        border-radius: 20px;
+        background-color:rgba(254,254,254,150);
+        font-size: 15pt;
+}
+
+QPushButton {
+        border: 1px solid #298DFF; /* QPushButton边框的宽度、样式和颜色 */
+        border-radius: 3px; /* 边框圆角 */
+        background-color: #F2F2F2; /* 背景颜色 */
+        color: #298DFF; /* 文本颜色 */
+        font-family: "Microsoft YaHei"; /* 文本字体族 */
+        font-size: 15pt; /* 文本字体大小 */
+}
+
+QPushButton:hover {	/* 鼠标悬浮在QPushButton上时的状态 */
+        background-color: #298DFF;
+        color: #F2F2F2;
+}
+
+QPushButton:checked { /* QPushButton可选中时的状态 */
+        border: 1px solid #FF5242;
+        background-color: #F2F2F2;
+        color: #FF5242;
+}
+
+QPushButton:pressed { /* 鼠标按压在QPushButton上时的状态 */
+        background-color: #257FE6;
+}
+
+QPushButton:checked:pressed { /* QPushButton处于可选中且鼠标按压在QPushButton上时的状态 */
+        background-color: #F2F2F2;
+}
+
+QPushButton:disabled { /* QPushButton禁用时的状态 */
+        border: 1px solid #CDCDCD;
+        background-color: #CDCDCD;
+        color: #B4B4B4;
+}
