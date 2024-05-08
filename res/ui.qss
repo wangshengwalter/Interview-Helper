@@ -21,6 +21,11 @@ QGroupBox {
         font-size: 15pt;
 }
 
+QScrollArea {
+        border: 0;
+        background-color:rgba(254,254,254,0);
+}
+
 QPushButton {
         border: 1px solid #298DFF; /* QPushButton边框的宽度、样式和颜色 */
         border-radius: 3px; /* 边框圆角 */
@@ -32,7 +37,7 @@ QPushButton {
 
 QPushButton:hover {	/* 鼠标悬浮在QPushButton上时的状态 */
         background-color: #298DFF;
-        color: #F2F2F2;
+        color: #00224D;
 }
 
 QPushButton:checked { /* QPushButton可选中时的状态 */

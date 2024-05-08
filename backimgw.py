@@ -1,6 +1,6 @@
 # This Python file uses the following encoding: utf-8
-from PySide2.QtWidgets import QWidget
-from PySide2.QtGui import QPainter, QPixmap
+from PyQt5.QtWidgets import QWidget
+from PyQt5.QtGui import QPainter, QPixmap
 
 
 

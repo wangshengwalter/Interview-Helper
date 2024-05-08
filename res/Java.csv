@@ -1,0 +1,266 @@
+,
+Java基本数据类型,byte、short、char、int、long、float、double、boolean
+Java中 等于 和 equals 的区别,基本数据类型比较用双等号（==），比较的是值。引用类型：类、接口、数组。当他们用双等号（==）进行比较的时候，比较的是他们在内存中的存放地址。对象是放在堆中的，栈中存放的是对象的引用（地址）。由此可见，双等号是对栈中的值进行比较的。如果要比较堆中对象是否相同，那么就要重写equals方法了。
+int、char、long 各占多少字节数,"boolen	8	1
+int	        32	4
+float	        32	4
+double	64	8
+char	        16	2
+byte	         8	1
+short	16	2
+long	         64	8"
+int 和 Integer 的区别,Integer 是int的包装类，int的初始值为零，而Integer的初值为null。int与Integer相比，会把Integer自动拆箱为int再去比。
+Java多态，override，覆写,"多态的存在有三个前提：要有继承关系、子类重写父类方法、父类数据类型的引用指向子类对象。弊端就是：不能使用子类特有的成员属性和子类特有的成员方法。其实就是override,得保证函数的名字，input， 和output都相同。overload是在同一个类中有同样的名字，但是input和output可以不一样。"
+overload，重载,overload是在同一个类中有同样的名字，但是input和output可以不一样。
+String、StringBuffer、StringBuilder的区别,"String：字符串常量，使用字符串拼接时是不同的两个空间。
+StringBuffer：字符串变量，线程安全，字符串拼接直接在字符串后追加。
+StringBuilder：字符串变量，非线程安全，字符串拼接直接在字符串后追加。
+StringBuilder执行效率高于StringBuffer高于String。String是一个常量，是不可变的，所以对于每次+=赋值都会创建一个新的对象，StringBuilder和StringBuffer都是可变的，当进行字符串拼接的时候采用append方法，在原来的基础上追加，所以性能要比String高，因为StringBuffer是线程安全的而StringBuilder是线程非安全的，所以StringBuilder的效率高于StringBuffer。对于大数据量的字符串拼接，采用StringBuffer、StringBuilder。但是好像现在string的合并调用的就是String Buffer，性能应该没有区别"
+什么是内部类？内部类的作用,"静态内部类：Static
+成员内部类：无修饰
+匿名内部类：实现继承类和接口
+
+内部类可以很好的实现隐蔽，一般的非内部类，是不允许有private和protectd等权限的，但内部类（除方法内部类）可以通过这些修饰符来实现隐蔽。
+
+内部类拥有外部类的访问权限（分静态与非静态情况），通过这一特性可以比较好的处理类之间的关联性，将一类事物的流程放在一起内部处理。
+
+通过内部类可以实现多重继承，Java默认是单继承的，我们可以通过多个内部类继承实现多个父类，接着由于外部类完全可访问内部类，所以就实现了类似多继承的效果。"
+静态内部类,只是为了降低包的深度，方便类的使用，静态内部类适用于包含类当中，但又不依赖于外在的类，不用使用外在类的非静态属性和方法，只是为了方便管理类结构而定义。在创建静态内部类的时候，不需要外部类对象的引用。
+抽象类和接口的区别,"abstract class中有abstract 方法，用来给子类继承，并且子类必须实现。子类只能继承一个父类。
+如果抽象类中的所有方法都是抽象的，则其实就是接口。
+interface xxx{},实现的时候用class XXX implements xxx{}。一个类可以继承很多接口。
+抽象方法可以有public、protectd 和 default 这些修饰符，而接口方法默认修饰符是public，不可以使用其他修饰符。
+抽象类比接口速度快，接口是稍微有点慢的，这是因为它需要时间去寻找类中实现的方法。"
+抽象类,"abstract class中有abstract 方法，用来给子类继承，并且子类必须实现。子类只能继承一个父类。
+如果抽象类中的所有方法都是抽象的，则其实就是接口。
+抽象方法可以有public、protectd 和 default 这些修饰符
+抽象类可以没有方法和属性，但是含有抽象方法的类一定是抽象类。"
+接口,"interface xxx{},实现的时候用class XXX implements xxx{}。一个类可以继承很多接口。
+规范、扩展、回调。
+对一些类是否具有某个功能非常关心，但不关心功能的具体实现，那么就需要这些类实现一个接口。"
+泛型中的extends和super的区别,"E - Element (在集合中使用，因为集合中存放的是元素)
+T - Type（Java 类）
+K - Key（键）
+V - Value（值）
+N - Number（数值类型）
+public static < E > void printArray( E[] inputArray ){}
+？ - 表示不确定的 java 类型
+上界通配符（Upper Bounds Wildcards）<？ extends XXX>
+不能存，但能取，取也只能放在XXX或者它的父类里面。
+下界通配符（Lower Bounds Wildcards）<？ super XXX>
+不影响存，但是只能放在Object对象里"
+父类的静态方法能否被子类重写？,不能，子类继承父类后，非静态方法覆盖父类的方法，父类的静态方法被隐藏。
+进程和线程的区别,"进程是资源分配的基本单位，线程是处理器调度的基本单位。
+
+进程拥有独立的地址空间，线程没有独立的地址空间，同一个进程内多个线程共享其资源。
+
+线程划分尺度更小，所以多线程程序并发性更高。
+
+一个程序至少有一个进程，一个进程至少有一个线程。
+
+线程是属于进程的，当进程退出时该进程所产生的线程都会被强制退出并清除。
+
+线程占用的资源要少于进程所占用的资源。"
+final、finally、finalize的区别,"final用于声明属性、方法和类，分别表示属性不可变，方法不可覆盖，类不可继承。
+
+finally是异常处理语句结构的一部分，表示总是执行。
+
+finalize是Object类的一个方法，在垃圾收集器执行的时候会回调被回收对象的finalize()方法，可以覆盖此方法提供垃圾收集时其他资源的回收，例如关闭文件。"
+Enumeration 和 Iterator 的区别,"Enumeration 只能读取集合数据，而不能对数据进行修改；Iterator 除了读取集合的数据之外，也能对数据进行删除操作；Enumeration 已经被 Iterator 取代了，之所以没有被标记为 Deprecated，是因为在一些遗留类（Vector、Hashtable）中还在使用。
+Iterator 支持 fail-fast 机制，而 Enumeration 不支持
+Fail-fast 机制是指 Java 集合 (Collection) 中的一种错误机制。当多个线程对同一个集合的内容进行操作时，就可能会产生 fail-fast 事件。例如：当某个线程 A 通过 Iterator 去遍历某集合的过程中，若该集合的内容被其他线程所改变了，那么线程 A 访问集合时，就会抛出 ConcurrentModificationException 异常，产生 fail-fast 事件。"
+对象拷贝理解？深拷贝、浅拷贝的区别？,"浅拷贝
+当对象被复制的时候只复制它本身和其中包含的值类型的成员变量，而引用类型的成员变量并没有复制。复制了引用类型的成员变量的地址。所以如果对原对象改变值类型的成员变量是不会影响备份的，但是改变原对象的引用类型的成员变量则会同时改变备份当中的那个引用类型的成员变量。因为拷贝的是地址。
+让要拷贝的类XXXX实现了Clonable接口并重写Object类的clone()方法，然后在方法内部调用super.clone()方法。
+
+深拷贝
+除了对象本身被复制外，对象所包含的所有成员变量也将被复制。
+"
+面向对象思想,"1.一个类只负责一件事
+2.类在添加新功能时不应该修改代码
+3.子类对象必须能够替换掉所有父类对象，并且需要比父类更特殊。
+4.不应该强迫客户依赖于它们不用的方法，使用多个专门的接口比使用单一的总接口更好。
+5.高层模块不应该依赖于低层模块，两者都应该依赖于抽象。抽象不应该依赖于细节，细节应该依赖于抽象。任何变量都不应该持有一个指向具体类的指针或者引用。任何类都不应该从具体类派生。任何方法都不应该覆写它的任何基类中的已经实现的方法。
+三大特性
+封装
+继承
+多态"
+String转换成Integer的方式以及原理,"String转int：
+int i = Integer.parseInt(s);
+int i = Integer.valueOf(s).intValue();
+
+int转String：
+String s = i + """";
+String s = Integer.toString(i);
+String s = String.valueOf(i);"
+Serializable 和 Parcelable 的区别,"Serializable 是 Java的序列化接口。特点是简单，直接实现该接口就行了，其他工作都被系统完成了，但是对于内存开销大，序列化和反序列化需要很多的 I/O 流操作。
+
+Parcelable 是Android的序列化方式，主要用于在内存序列化上，采用该方法需要实现该接口并且手动实现序列化过程，相对复杂点。如果序列化到存储设备（文件等）或者网络传输，比较复杂，建议用Serializable 方式。
+
+**最大的区别就是存储媒介的不同：**Serializable 使用IO读写存储在硬盘上，Parcelable 是直接在内存中读写，内存读写速度远大于IO读写，所以Parcelable 更加高效。Serializable在序列化过程中会产生大量的临时变量，会引起频繁的GC，效率低下。"
+java序列化,"Java 序列化是一种将对象转换为字节流的过程，以便可以将对象保存到磁盘上，将其传输到网络上，或者将其存储在内存中，以后再进行反序列化，将字节流重新转换为对象。
+
+序列化在 Java 中是通过 java.io.Serializable 接口来实现的，该接口没有任何方法，只是一个标记接口，用于标识类可以被序列化。
+
+import java.io.Serializable;
+public class MyClass implements Serializable {
+    // 类的成员和方法
+}"
+Java多线程,"继承Thread类
+public class XXXX extends Thread{}
+
+实现Runnable接口
+public class XXXX implements Runnable{}
+
+使用Callable和Future创建线程"
+,
+Android 中有哪些 IPC（进程间通信）方式,"Intent、使用文件共享、使用 Messenger、使用 AIDL、使用 ContentProvider、以及使用 Socket。
+"
+如何设置进度条在数据加载完成时消失,"android:visibility"
+Android 常用控件有哪些？,TextView、按钮 Button、内容编辑 EditText、ImageView、进度条 ProgressBar、警告框 AlertDialog、进度提示框 ProgressDialog 等等。
+"当启动一个 Activity 并且新的 Activity 执行完后需要返回到启动它的 Activity 来执行的回调函数是什么？
+","startActivityResult() 函数。
+"
+两个 Activity 之间跳转时必然会执行的是哪几个方法？,"onPause() 之后另外一个onCreate() 、onStart()、onResume()  然后之前的就可以stopl"
+"Activity 异常情况下的生命周期:","1.系统配置数据改变导致 Activity 销毁并重创：例如横竖屏的切换时
+2.资源内存不足，导致 优先级低的 Activity 被杀.但是Task 和 Activity 栈以及相应的 Intent 和数据会被系统保存起来，在应用程序被切回前台时，均会被恢复。
+"
+"JVM","code ->字节码->机器指令
+"
+"导致ANR常见情形：
+"," 1）I/O阻塞;
+ 2）网络阻塞；
+ 3）onReceiver执行时间超过10s;
+ 4）多线程死锁;
+
+ 1）Service Timeout:服务在20s内未执行完成；
+ 2）BroadcastQueue Timeout：比如前台广播在10s内执行完成;
+ 3）ContentProvider Timeout：内容提供者执行超时;
+ 4）inputDispatching Timeout: 输入事件分发超时5s，包括按键分发事件的超时。
+"
+如何避免ANR异常：," 1）UI线程尽量只做跟UI相关的工作;
+ 2）耗时的工作()比如数据库操作，I/O，网络操作)，采用单独的工作线程处理;
+ 3）用Handler来处理UIthread和工作thread的交互;"
+StringBuilder 和StringBuffer,"StringBuilder 和StringBuffer 功能基本相似，方法也差不多。 不同的是，StringBuffer 是线程安全的，而StringBuilder 则没有实现线程安全功能，所以性能略高。
+"
+"Activity
+","onCreate()：
+当 Activity 第一次创建时会被调用，在此方法中应当完成初始化工作，比如加载布局、绑定事件等。
+onRestart()：
+表示 Activity 正在重新启动，一般情况下，当当前 Activity 从不可见重新变为可见状态时，onRestart 就会被调用。
+onStart()：
+表示 Activity 正在被启动，即将开始，这时 Activity 已经出现了，但是还没有出现在前台，无法与用户交互。
+onResume()：
+表示 Activity 已经可见了，并且出现在前台并开始活动。需要和 onStart() 对比，onStart() 的时候 Activity 还在后台，onResume() 的时候 Activity 才显示到前台。
+onPause()：
+表示 Activity 正在停止，仍可见，正常情况下，紧接着 onStop() 就会被调用；在特殊情况下，如果这个时候快速地回到当前 Activity，那么 onResume() 就会被调用（极端情况）；onPause() 执行一定要速度快，不然会影响到新的栈顶活动的使用，所以不能进行耗时操作。
+onStop()：
+表示 Activity 即将停止，不可见，位于后台。可以做稍微重量级的回收工作，同样不能太耗时。
+onDestory()：
+表示 Activity 即将销毁，这是 Activity 生命周期的最后一个回调，可以做一些回收工作和最终的资源回收，之后 Activity 的状态将变为销毁状态。
+"
+锁，多线程，互斥锁（内置锁，显示锁），读写锁,"内置锁synchronized，即synchronized关键字修饰的同步代码块，是一种互斥锁。
+显式锁ReentrantLock，显式锁ReentrantLock实现了Lock接口，Lock接口提供了一种无条件的、可轮询的、定时的、可中断的锁获取操作，所有加锁和解锁的方法都是显式的。
+读写锁：互斥锁是一种过于保守的加锁规则，写写冲突、写读冲突有必要避免，但是读读之间是没有冲突的，所以需要一种更加宽松的加锁规则，由此出现了读写锁ReadWriteLock：一个资源可以被多个读操作访问，或者被一个写操作访问，但是两者不能同时进行。"
+线程间通信机制，线程间通信，不使用等待/通知机制实现线程间通信，,"一、wait方法
+（1）方法wait()的作用是使当前执行代码的线程进行等待，该方法会将该线程放入”预执行队列“中，并且在wait()所在的代码处停止执行，直到接到通知或被中断为止。
+（2）在调用wait()之前，线程必须获得该对象级别锁，这是一个很重要的地方，很多时候我们可能会忘记这一点，即只能在同步方法或同步块中调用wait()方法。
+（3）还需要注意的是wait()是释放锁的，即在执行到wait()方法之后，当前线程会释放锁，当从wait()方法返回前，线程与其他线程竞争重新获得锁。
+二、notify方法
+（1）和wait()方法一样,notify()方法也要在同步块或同步方法中调用，即在调用前，线程也必须获得该对象的对象级别锁。
+（2）该方法是用来通知那些可能等待该对象的对象锁的其他线程，如果有多个线程等待，则由线程规划器随机挑选出其中一个呈wait状态的线程，对其发出通知notify，并使它等待获取该对象的对象锁。
+（3）这里需要注意的是，执行notify方法之后，当前线程不会立即释放其拥有的该对象锁，而是执行完之后才会释放该对象锁，被通知的线程也不会立即获得对象锁，而是等待notify方法执行完之后，释放了该对象锁，才可以获得该对象锁。
+（3）notifyAll()通知所有等待同一共享资源的全部线程从等待状态退出，进入可运行状态，重新竞争获得对象锁。
+三、wait()/notify()方法总结
+（1）wait()/notify()要集合synchronized关键字一起使用，因为他们都需要首先获取该对象的对象锁；
+（2）wait方法是释放锁，notify方法是不释放锁的；"
+"日志，log,android log等级设置","AndroidManifest.xml文件中设置应用的 android:debuggable 值来实现显示的等级
+Log.v(TAG, ""This is a verbose log message"");
+Log.d(TAG, ""This is a debug log message"");
+Log.i(TAG, ""This is an info log message"");
+Log.w(TAG, ""This is a warn log message"");
+Log.e(TAG, ""This is an error log message"");"
+synchronized作用域，锁的作用域,"synchronized 关键字代表这个方法加锁,相当于不管哪一个线程（例如线程A），运行到这个方法时,都要检查有没有其它线程B（或者C、 D等）正在用这个方法(或者该类的其他同步方法)，有的话要等正在使用synchronized方法的线程B（或者C 、D）运行完这个方法后再运行此线程A,没有的话,锁定调用者,然后直接运行
+修饰代码块：大括号括起来的代码，作用于调用的对象。
+修饰方法：整个方法，作用于调用的对象。
+修饰静态方法：整个静态方法，作用于所有对象。
+修饰类：括号括起来的部分，作用于所有对象。"
+"虚拟机，JVM,java虚拟机，","如下图所示，JVM的体系结构包含几个主要的子系统和内存区：              
+　　垃圾回收器（Garbage Collection）：负责回收堆内存（Heap）中没有被使用的对象，即这些对象已经没有被引用了。              
+　　类装载子系统（Classloader Sub-System）：除了要定位和导入二进制class文件外，还必须负责验证被导入类的正确性，为类变量分配并初始化内存，以及帮助解析符号引用。              
+　　执行引擎（Execution Engine）：负责执行那些包含在被装载类的方法中的指令。              
+　　运行时数据区（Java Memory Allocation Area）：又叫虚拟机内存或者Java内存，虚拟机运行时需要从整个计算机内存划分一块内存区域存储许多东西。例如：字节码、从已装载的class文件中得到的其他信息、程序创建的对象、传递给方法的参数，返回值、局部变量等等。"
+java内存分区，栈（Stack），程序计数器，方法区（Method Area），堆（Heap）,"java内存通常被划分为5个区域：程序计数器（Program Count Register）、本地方法栈（Native Stack）、方法区（Methon Area）、栈（Stack）、堆（Heap）。
+程序计数器（Program Count Register）：又叫程序寄存器。JVM支持多个线程同时运行，当每一个新线程被创建时，它都将得到它自己的PC寄存器（程序计数器）。
+栈（Stack）：又叫堆栈。JVM为每个新创建的线程都分配一个栈。也就是说,对于一个Java程序来说，它的运行就是通过对栈的操作来完成的。栈以帧为单位保存线程的状态。JVM对栈只进行两种操作：以帧为单位的压栈和出栈操作。先进后出
+方法区（Method Area）：当虚拟机装载一个class文件时，它会从这个class文件包含的二进制数据中解析类型信息，然后把这些类型信息（包括类信息、常量、静态变量等）放到方法区中，该内存区域被所有线程共享，如下图所示。本地方法区存在一块特殊的内存区域，叫常量池（Constant Pool），这块内存将与String类型的分析密切相关。
+堆（Heap）：Java堆（Java Heap）是Java虚拟机所管理的内存中最大的一块。Java堆是被所有线程共享的一块内存区域。在此区域的唯一目的就是存放对象实例，几乎所有的对象实例都是在这里分配内存，但是这个对象的引用却是在栈（Stack）中分配。因此，执行String s = new String(""s"")时，需要从两个地方分配内存：在堆中为String对象分配内存，在栈中为引用（这个堆对象的内存地址，即指针）分配内存，如下图所示。
+"
+"GC,内存回收，新生代，老年代","在分配对象遇到内存不足时，先对新生代进行GC（Young GC）；当新生代GC之后仍无法满足内存空间分配需求时， 才会对整个堆空间以及方法区进行GC（Full GC）。
+ 老年代（Old Generation）： 当 OLD 区空间不够时， JVM 会在 OLD 区进行 major collection ；完全垃圾收集后，若Survivor及OLD区仍然无法存放从Eden复制过来的部分对象，导致JVM无法在Eden区为新对象创建内存区域，则出现""Out of memory错误""  。"
+ArrayList和LinkedList,"ArrayList是基于索引的数据接口，它的底层是数组。它可以以O(1)时间复杂度对元素进行随机访问。与此对应，LinkedList是以元素列表的形式存储它的数据，每一个元素都和它的前一个和后一个元素链接在一起，在这种情况下，查找某个元素的时间复杂度是O(n)。
+相对于ArrayList，LinkedList的插入，添加，删除操作速度更快，因为当元素被添加到集合任意位置的时候，不需要像数组那样重新计算大小或者是更新索引。
+LinkedList比ArrayList更占内存，因为LinkedList为每一个节点存储了两个引用，一个指向前一个元素，一个指向下一个元素。也可以参考ArrayList vs. LinkedList。
+1.因为 Array 是基于索引 (index) 的数据结构，它使用索引在数组中搜索和读取数据是很快的。 Array 获取数据的时间复杂度是 O(1), 但是要删除数据却是开销很大的，因为这需要重排数组中的所有数据。
+2.相对于 ArrayList ， LinkedList 插入是更快的。因为 LinkedList 不像 ArrayList 一样，不需要改变数组的大小，也不需要在数组装满的时候要将所有的数据重新装入一个新的数组，这是 ArrayList 最坏的一种情况，时间复杂度是 O(n) ，而 LinkedList 中插入或删除的时间复杂度仅为 O(1) 。 ArrayList 在插入数据时还需要更新索引（除了插入数组的尾部）。
+3.类似于插入数据，删除数据时， LinkedList 也优于 ArrayList 。
+4.LinkedList 需要更多的内存，因为 ArrayList 的每个索引的位置是实际的数据，而 LinkedList 中的每个节点中存储的是实际的数据和前后节点的位置 ( 一个 LinkedList 实例存储了两个值： Node<E> first 和 Node<E> last 分别表示链表的其实节点和尾节点，每个 Node 实例存储了三个值： E item,Node next,Node pre) 。"
+"TCP和UDP,网络，","UDP在传送数据之前不需要先建立连接。远程主机运输层在收到UDP报文后，不需要给出任何确认。因此UDP不提供可靠交付，但是效率高。TCP则提供面向连接的服务，在传送数据之前必须先建立连接，数据传送结束后要释放连接。TCP要提供可靠的、面向连接的运输服务，因此不可避免的增加了许多的开销，如确认、流量控制等等。
+TCP和UDP在发送报文时所采用的方式完全不同。TCP并不关心进程一次把多长的报文发送到TCP的缓存中，而是根据对方给出的窗口值和当前网络拥塞程度决定一个报文段包含多少字节，而UDP发送报文长度是应用进程给出的。如果应用进程传送到TCP缓存的数据块太长，TCP就划分短一些在传送。若过短也可以等待积累足够多的字节后再构成报文段发送出去。
+UDP程序结构比较简单，它的首部最少为8个字节而TCP最少为20字节。
+UDP不保证数据的顺序结构，而TCP必须保证数据的顺序结构。
+TCP面向字节流，实际上是TCP把数据看成一连串无结构的字节流；UDP是面向报文的，UDP没有阻塞控制，因此网络出现阻塞不会使源主机的发送速率降低。"
+Http1.1和Http1.0及2.0的区别,"长连接 HTTP1.0协议使用非持久连接，即在非持久连接下，一个TCP连接只传输一个Web对象。
+HTTP1.0需要使用keep-alive参数来告知服务器端要建立一个长连接
+HTTP1.1支持持久连接，也就是说长连接，在一个TCP连接上可以传送多个HTTP请求和响应，减少了建立和关闭连接的消耗和延迟。
+HTTP2.0使用了多路复用的技术，做到同一个连接并发处理多个请求，而且并发请求的数量比HTTP1.1大了好几个数量级。"
+"DNS解析过程,DNS域名解析","浏览器缓存,系统的缓存,本地DNS服务器,ROOT DNS,Name Server DNS,"
+HTT状态码，status code,"1xx：指示信息，表示请求已接收，继续处理
+2xx：成功，表示请求已被成功接收
+3xx：重定向，要完成的请求必须进行更进一步的操作
+4xx，客户端错误，请求有语法错误或者请求无法实现
+5xx，服务器端错误，服务器未能实现合法的请求
+常见的状态码：
+100：客户端必须继续发出请求
+101：客户端要求服务器根据请求转换HTTP协议版本
+200：响应成功
+206：客户端表明自己只需要目标URL上的部分资源的时候返回的。
+301：永久重定向
+302：临时重定向
+402: there was a problem with a payment
+403: forbidden
+503：服务不可用
+504：网关超时"
+"Java的异常体系,Java的异常状态","可查异常：
+即编译时异常，只编译器在编译时可以发现的错误，程序在运行时很容易出现的异常状况，这些异常可以预计，所以在编译阶段就必须手动进行捕捉处理，即要用try-catch语句捕获它，要么用throws子句声明抛出，否者编译无法通过，如：IOException、SQLException以及用户自定义Exception异常。
+不可查异常：
+不可查异常包括**运行时异常**和**错误**，他们都是在程序运行时出现的。异常和错误的区别：异常能被程序本身处理，错误是无法处理的。**运行时异常指的是**程序在运行时才会出现的错误，由程序员自己分析代码决定是否用try...catch进行捕获处理。如空指针异常、类转换异常、数组下标越界异常等等。**错误是指**程序无法处理的错误，表示运行应用程序中较严重的问题，如系统崩溃、虚拟机错误、动态连接失败等等。大多数错误与代码编写者执行的操作无关，而表示代码运行时JVM出现的问题。"
+线程池,"线程池的重用
+线程的创建和销毁的开销是巨大的，而通过线程池的重用大大减少了这些不必要的开销，当然既然少了那么多消耗内存的开销，其线程执行速度也是突飞猛进的提升。
+控制线程池的并发数
+控制线程池的并发数可以有效地避免大量的线程争夺CPU资源而造成阻塞。
+线程池可以对线程进行管理
+线程池可以提供定时、定期、单线程、并发数控制等功能。
+
+corePoolSize：线程池中核心线程的数量。
+maxinumPoolSize：线程池中最大的线程数量。
+keepAliveTime：非核心线程的超时时长，当系统中非核心线程闲置时间超过keepAliveTime之后，则会被回收。如果ThreadPoolExecutor的allowCoreThreadTimeOut属性设置为true，则该参数也表示核心线程的超时时长。
+unit：第三个参数的单位，有毫秒、秒、分等等。
+workQueue：线程池中的任务队列，该队列主要用来存储已经被提交但尚未执行的任务。存储在这里的任务是由ThreadPoolExecutor的execute方法提交来的。
+threadFactory：为线程池提供创建新线程的功能，这个我们一般使用默认即可。
+handler：拒绝策略，当线程无法执行新任务（一般是由于线程池中的线程数量已经达到最大数或者线程池关闭导致的）。默认情况下，当线程池无法处理新线程时，会抛出一个RejectedExecutionException。
+
+有以下：
+当currentSize < corePoolSize 时，直接启动一个核心线程并执行任务
+当currentSize >= corePoolSize，并且 workQueue 未满时，添加进来的任务会被安排到workQueue中等待执行
+当workQueue已满，但是currentSize < maxinumPoolSize 时，会立即开启一个非核心线程来执行任务
+当 currentSize >= corePoolSize、workQueue已满，并且currentSize > maxinumPoolSize 时，调用handler默认会抛出异常
+其他线程池
+FixedThreadPool
+有固定数量线程的线程池，其中corePoolSize = maxinumPoolSize，且keepAliveTime为0，适合线程稳定的场所。
+SingleThreadPool
+corePoolSize = maxinumPoolSzie = 1 且 keepAliveTime 为0，适合线程同步操作的场所。
+CachedThreadPool
+corePoolSize = 0，maximunPoolSize = Integer.MAX_VALUE（2的32次方-1）。
+ScheduledThreadPool
+是一个具有定时定期执行任务功能的线程池。"
