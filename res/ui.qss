@@ -1,6 +1,11 @@
 QLineEdit {
         font-size: 13pt;
 }
+QTextEdit {
+        font-size: 13pt;
+        background-color:rgba(254,254,254,0);
+        border: 0px
+}
 
 QComboBox {
         font-size: 10pt;
@@ -28,7 +33,7 @@ QScrollArea {
 
 QPushButton {
         border: 1px solid #298DFF; /* QPushButton边框的宽度、样式和颜色 */
-        border-radius: 3px; /* 边框圆角 */
+        border-radius: 10px; /* 边框圆角 */
         background-color: #F2F2F2; /* 背景颜色 */
         color: #298DFF; /* 文本颜色 */
         font-family: "Microsoft YaHei"; /* 文本字体族 */

@@ -12,6 +12,7 @@ from PyQt5.QtWidgets import QComboBox
 from PyQt5.QtWidgets import QCheckBox
 from PyQt5.QtWidgets import QGroupBox
 from PyQt5.QtWidgets import QLineEdit
+from PyQt5.QtWidgets import QTextEdit
 from PyQt5.QtWidgets import QScrollArea
 from PyQt5.QtWidgets import QSizePolicy
 
@@ -414,9 +415,9 @@ class MainWindow(QMainWindow):
 
         # -----------------------------------------------------------
         info_api_l = QVBoxLayout()
-        settingl.addLayout(info_api_l, 4)
+        settingl.addLayout(info_api_l, 6)
 
-        tutorialw = QGroupBox("Tutorial(Information before setting): ")
+        tutorialw = QGroupBox("Instruction")
         info_api_l.addWidget(tutorialw, 5)
 
         chatgptapiw = QGroupBox("Enter your ChatGpt APi: ")
@@ -473,9 +474,12 @@ class MainWindow(QMainWindow):
 
         infol.addSpacing(30)
 
-        info_label = QLabel("here is infomation example: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
-        info_label.setWordWrap(True)
-        infol.addWidget(info_label)
+        info_textedit = QTextEdit()
+        with open("res\instru.txt", 'r') as file:
+            content = file.read()
+            info_textedit.setText(content)
+        info_textedit.setReadOnly(True)
+        infol.addWidget(info_textedit)
 
 
         # 1.4 openapi
